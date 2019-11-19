@@ -1,7 +1,7 @@
 /*********************Products ROUTES***************************/
 const express = require('express')
 const router = express.Router();
-const Task = require("../models/Product");
+const productForm = require("../models/Product");
 
 //Route to direct use to list product
 router.get("/",(req,res)=>
@@ -39,6 +39,58 @@ router.post("/add",(req,res)=>
 .catch(err=>console.log(`Error : ${err}`));
 
 });
+
+////Route to fetch all tasks
+router.get("/list",(req,res)=>
+{
+
+    productForm.find()
+    .then((ProductForm)=>{
+        res.render("product/productList",
+        {
+            lists:ProdectForm
+        });
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+});
+
+//Route to direct user to the product edit form page
+router.get("/edit/:id",(req,res)=>{
+
+    productForm.findById(req.params.id)
+    .then((ProductForm)=>{
+        res.render("product/productEditForm",{
+            productDocument:ProductForm
+        })
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+})
+
+
+//Route to update a product based on the information entered in the product form
+router.put("/edit/:id",(req,res)=>
+{
+    productForm.findById(req.params.id)
+    .then((ProductForm)=>{
+
+        ProductForm.title=req.body.title;
+        ProductForm.price=req.body.price;
+        ProductForm.quantity=req.body.quantity;
+        ProductForm.description=req.body.description;
+    
+
+        ProductForm.save()
+
+        .then(()=>{
+           res.redirect("/list") 
+        })
+        .catch(err=>console.log(`Error : ${err}`));
+
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+});
+
+
 
 
 

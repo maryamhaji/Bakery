@@ -27,6 +27,11 @@ const productSchema = new Schema({
     {
         type:Boolean,
         required:true
+    },
+    dateCreated :
+    {
+        type:Date,
+        default: Date.now()
     }
   });
   

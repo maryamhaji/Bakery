@@ -1,0 +1,8 @@
+<h2>Product Listing </h2>
+ 
+ <div class="products_list">
+{{#each product}}    
+<p>{{product.title}}</p><a href="/product/list/{{product._id}}">edit</a>
+{{/each}}
+
+</div>
