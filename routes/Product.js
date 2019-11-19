@@ -32,8 +32,8 @@ router.post("/add",(req,res)=>
   ProductForm.save()
   .then(()=>{
     console.log(`Task was added to the database`);
-    console.log(`${ProductForm}`);
-    res.redirect("/product/list");
+    console.log(`${productForm}`);
+    res.redirect("/list");
 
 })
 .catch(err=>console.log(`Error : ${err}`));
@@ -48,7 +48,7 @@ router.get("/list",(req,res)=>
     .then((ProductForm)=>{
         res.render("product/productList",
         {
-            lists:ProdectForm
+            lists:ProductForm
         });
     })
     .catch(err=>console.log(`Error : ${err}`));
