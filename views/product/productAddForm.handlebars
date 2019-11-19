@@ -1,0 +1,24 @@
+<h2>Add Product</h2>
+    
+    <form method="POST" action="/add">
+
+        <label>Product Title</label>
+        <input type="text" name="title" id="title"> <br><br>
+
+        <label>Product Price</label>
+        <input type="text" name="price" id="price"><br><br>
+
+        <label>Quantity on Hand</label>
+        <input type="text" name="quantity" id="quantity"> <br><br>
+        
+        <label>Product Description</label>
+        <textarea id="description" name="description"></textarea><br><br>
+        
+        <lable> Taxable item</lable>
+        <input type="radio" name="taxable" value="yes">Yes<br>
+        <input type="radio" name="taxable" value="No">No<br>
+        
+        <input type="submit" value="Add Product">
+
+
+    </form>
